@@ -27,6 +27,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
    b. batch_size = 512 was still failing. There was a slight gap between memory reserved and memory allocation. Thought mixed precision training (fp 8) might do the trick. Didn't work as it's not yet properly supported.
    
    c. Attempted to figureout the throughput and GPU utilisation by plotting the GPU utilisation graphs - there is some scope here as there was not 100% utlisation of the RAM at all times.
+
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
    
    e. Attempted gradient checkpointing. batch_size = 512 and higher was working now.
