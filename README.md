@@ -60,6 +60,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 2. Automated experiments of FSDP parameters
 3. Improve GPU utilization
 4. Optimise using Dynamo
+5. Integrate experiment tracking 
 
 
 
