@@ -30,13 +30,13 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
    GPU Resource Utilisation Graphs -
 
-   ![batchsize = 512](/images/512(1).png "GPU utilisation during training for batchsize = 512")
+   ![batchsize = 512](/images/512_latest.png "GPU utilisation during training for batchsize = 512")
 
-   **GPU utilisation during training for batch-size = 512**
+   **GPU utilization during training for batch-size = 512**
 
-   ![batchsize = 256](/images/256(1).png "GPU utilisation during training for batchsize = 256")
+   ![batchsize = 256](/images/256_latest.png "GPU utilisation during training for batchsize = 256")
 
-   **GPU utilisation during training for batch-size = 256**
+   **GPU utilization during training for batch-size = 256**
 
 
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
