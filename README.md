@@ -1,16 +1,15 @@
 # Finetuning GPT2 using FSDP
 Finetuning GPT2 on wikitext using distributed training (FSDP)
 
+**Instance used** - EC2 g4dn.12xlarge instance
 
-Instance used - EC2 g4dn.12xlarge instance
+**Dataset used** - [wikitext-2-v1] (https://huggingface.co/datasets/wikitext/viewer/wikitext-2-v1)
 
-Dataset used - [wikitext-2-v1] (https://huggingface.co/datasets/wikitext/viewer/wikitext-2-v1)
+**Model used** - [GPT-2 (144M)] (https://huggingface.co/openai-community/gpt2)
 
-Model used - [GPT-2 (144M)] (https://huggingface.co/openai-community/gpt2)
+**Processing** - a per-gpu batch size of 24, which totals to a batch size of 96 (across all 4 GPUs) with FSDP leveraged
 
-Processing - a per-gpu batch size of 24, which totals to a batch size of 96 (across all 4 GPUs) with FSDP leveraged
-
-Token size - 512 
+**Token size** - 512 
 
 ## Experiments
 
@@ -33,7 +32,7 @@ Table 1: Finetuning GPT-2(144M) model 0- different strategies and batch sizes
 
 Table 2: FSDP Sharding Strategies for different batch sizes
 
-# What worked
+## What worked
 1. Mixed precision - fp 16
 2. Gradient checkpointing (excluding activation checpointing)
 3. CPU Offloading
