@@ -26,7 +26,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
    b. `batch_size = 512` was still failing. There was a slight gap between memory reserved and memory allocation. Thought mixed precision training (fp 8) might do the trick. Spent tons of time here but it didn't work as it's not yet properly supported.
    
-   c. Attempted to figureout the throughput and GPU utilisation by plotting the GPU utilisation graphs - there is some scope here as there was not 100% utlisation of the RAM at all times.
+   c. Attempted to figure out the throughput and GPU utilization by plotting the GPU utilization graphs - there is some scope here as there was not 100% utilization of the RAM at all times.
 
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
    
@@ -53,7 +53,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 | 256 | ✅ | size based wrap - 2k params | ❌ | ❌ | ❌ | ✅ | ✅ |
 | 512  | ✅ | size based wrap - 2k params |  ❌| ❌ | ❌ | ✅ | ✅ |
 
-**Table 2: FSDP Sharding Strategies for different batch sizes**
+**Table 2: FSDP Sharding Strategies for Different Batch Sizes**
 
 ## What worked
 1.  Mixed precision - fp 16
@@ -68,13 +68,13 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 4.  Access to budget/billing usage
 
 ## Limitations
-1.  Make the code more modular to make the trainign work for different datasets and models 
-2.  Build custom training class to have more control on the FSDP processes
-3.  Incorporate hyperparametertuning for better performance
+1.  Make the code more modular to make the training work for different datasets and models 
+2.  Build a custom training class to have more control on the FSDP processes
+3.  Incorporate hyperparameter tuning for better performance
 
 ## Things to Do
 1.  Generate training and validation plots
-2.  Genrate GPU utilisation graphs
+2.  Generate GPU utilization graphs
 
 ## Things to Try
 1.  PEFT LoRA QloRA
