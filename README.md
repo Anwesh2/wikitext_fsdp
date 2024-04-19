@@ -1,36 +1,36 @@
 # Finetuning GPT2 using FSDP
 Finetuning GPT2 on wikitext using distributed training (FSDP)
 
-**Instance used** - EC2 g4dn.12xlarge instance
+   **Instance used** - EC2 g4dn.12xlarge instance
 
-**Dataset used** - [wikitext-2-v1] (https://huggingface.co/datasets/wikitext/viewer/wikitext-2-v1)
+   **Dataset used** - [wikitext-2-v1] (https://huggingface.co/datasets/wikitext/viewer/wikitext-2-v1)
 
-**Model used** - [GPT-2 (144M)] (https://huggingface.co/openai-community/gpt2)
+   **Model used** - [GPT-2 (144M)] (https://huggingface.co/openai-community/gpt2)
 
-**Processing** - a per-gpu batch size of 24, which totals to a batch size of 96 (across all 4 GPUs) with FSDP leveraged
+   **Processing** - a per-gpu batch size of 24, which totals to a batch size of 96 (across all 4 GPUs) with FSDP leveraged
 
-**Token size** - 512 
+   **Token size** - 512 
 
 ## My process and thinking
 1. Created a base pipeline on Colab with dataset loading, model loading, tokenization, model finetuning.
    
 2. Attempted parallelization on Kaggle since it has multiple GPUs.
    
-3. Setup the AWS instances and made the base pipelines work on a single GPU, batch_size = 8
+3. Setup the AWS instances and made the base pipelines work on a single GPU, `batch_size` = 8
    
 4. Had a choice to either create a custom training class or leverage Huggingface's trainer and accelerate modules. Chose the later because of time constraints, sacrificing control for quicker experimentation.
    
 5. Experimented with different parameters of FSDP to facilitate as high a size of batch_size and token_length as possible.
    
-   a.Full sharding + size based wrapping strategy + not pre-fetching + mixed precision training (fp 16) made batch_size = 256 work
+   a.Full sharding + size based wrapping strategy + not pre-fetching + mixed precision training (fp 16) made `batch_size = 256` work
 
-   b. batch_size = 512 was still failing. There was a slight gap between memory reserved and memory allocation. Thought mixed precision training (fp 8) might do the trick. Didn't work as it's not yet properly supported.
+   b. `batch_size = 512` was still failing. There was a slight gap between memory reserved and memory allocation. Thought mixed precision training (fp 8) might do the trick. Spent tons of time here but it didn't work as it's not yet properly supported.
    
    c. Attempted to figureout the throughput and GPU utilisation by plotting the GPU utilisation graphs - there is some scope here as there was not 100% utlisation of the RAM at all times.
 
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
    
-   e. Attempted gradient checkpointing. batch_size = 512 and higher was working now.
+   e. Attempted gradient checkpointing. `batch_size = 512` and higher was working now.
 
 
 
