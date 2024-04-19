@@ -32,11 +32,11 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
    ![block_size = 512](/images/512_latest.png "GPU utilisation during training for block_size = 512")
 
-   **GPU utilization during training for batch-size = 512**
+   **GPU utilization during training for block_size = 512**
 
    ![block_size = 256](/images/256_latest.png "GPU utilisation during training for block_size = 256")
 
-   **GPU utilization during training for batch-size = 256**
+   **GPU utilization during training for block_size = 256**
 
 
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
@@ -50,7 +50,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 ## Experiments
 
 
-| Method | Batch Size Max ($BS) | Approx Train Time per epoch(minutes) (*) | Perplexity | Notes
+| Method | Block Size Max ($BS) | Approx Train Time per epoch(minutes) (*) | Perplexity | Notes
 | --- | --- | --- | --- | --- |
 | FSDP + full_shard | 64 | 1:52 |85  |  |
 | FSDP + full_shard + transformer_based_wrap | 128 | 1:47 | 62 |  |
@@ -61,7 +61,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
  
  *need to re-confirm/recalculate
 
-| Batch Size Max ($BS) | Full-Sharding | Wrapping Strategy | Prefetch | Forward-fetch | use_original_params | CPU-RAM Offloading+Efficient Loading | Mixed Precision Training
+| Block Size Max ($BS) | Full-Sharding | Wrapping Strategy | Prefetch | Forward-fetch | use_original_params | CPU-RAM Offloading+Efficient Loading | Mixed Precision Training
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 64 | ✅ | transformer_based_wrap |✅  | ✅ | ✅ | ✅ |❌  |
 | 128 | ✅ | transformer_based_wrap | ✅ | ✅ | ✅ |✅  | ❌ |
