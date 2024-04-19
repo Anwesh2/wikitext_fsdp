@@ -90,7 +90,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 ## Things to Do
 1.  Generate training and validation plots.
 2.  Generate proper GPU utilization graphs.
-3.  Implement more metrics (`ROUGE`, `mauve` holistic accuracy metrics - `creativity`, `coherence`, `diversity`.)
+3.  Implement more metrics (`accuracy`, `mauve` holistic accuracy metrics - `creativity`, `coherence`, `diversity`.)
 4.  PEFT LoRA QloRA
 5.  Automated experiments of FSDP parameters
 6.  Improve GPU utilization
