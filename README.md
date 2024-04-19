@@ -39,19 +39,19 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
 | Method | Batch Size Max ($BS) | Approx Train Time (minutes) | Perplexity | Notes
 | --- | --- | --- | --- | --- |
-| FSDP + Full_Shard | 64 |  |  |  |
-| FSDP + Full_Shard + Transformer_based_wrap | 128 |  |  |  |
-| FSDP + Full_Shard + min_num_params = 2K + No-Prefetch + No-use_original_params + MPT + fp16 | 256 |  |  |  |
-| FSDP + Full_Shard + min_num_params = 2K + No-Prefetch + No-use_original_params + MPT + fp16 + Gradient checkpointing  | 512 |  |  |  |
+| FSDP + full_shard | 64 |  |  |  |
+| FSDP + full_shard + transformer_based_wrap | 128 |  |  |  |
+| FSDP + full_shard + min_num_params = 2K + no-prefetch + no-use_original_params + MPT + fp16 | 256 |  |  |  |
+| FSDP + full_shard + min_num_params = 2K + no-prefetch + no-use_original_params + MPT + fp16 + Gradient checkpointing  | 512 |  |  |  |
 
 **Table 1: Finetuning GPT-2(144M) model 0- different strategies and batch sizes**
 
 | Batch Size Max ($BS) | Full-Sharding | Wrapping Strategy | Prefetch | Forward-fetch | use_original_params | CPU-RAM Offloading+Efficient Loading | Mixed Precision Training
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 64 | ✅ | Transformer_based_wrap |✅  | ✅ | ✅ | ✅ |❌  |
-| 128 | ✅ | Transformer_based_wrap | ✅ | ✅ | ✅ |✅  | ❌ |
-| 256 | ✅ | Size based wrap - 2k params | ❌ | ❌ | ❌ | ✅ | ✅ |
-| 512  | ✅ | Size based wrap - 2k params |  ❌| ❌ | ❌ | ✅ | ✅ |
+| 64 | ✅ | transformer_based_wrap |✅  | ✅ | ✅ | ✅ |❌  |
+| 128 | ✅ | transformer_based_wrap | ✅ | ✅ | ✅ |✅  | ❌ |
+| 256 | ✅ | size based wrap - 2k params | ❌ | ❌ | ❌ | ✅ | ✅ |
+| 512  | ✅ | size based wrap - 2k params |  ❌| ❌ | ❌ | ✅ | ✅ |
 
 **Table 2: FSDP Sharding Strategies for different batch sizes**
 
