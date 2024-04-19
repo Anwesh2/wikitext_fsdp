@@ -36,7 +36,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
 ## What worked
 1. Mixed precision - fp 16
-2. Gradient checkpointing (excluding activation checpointing)
+2. Gradient checkpointing
 3. CPU Offloading
 4. Full Sharding
 
