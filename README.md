@@ -21,7 +21,9 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 | FSDP + Full_Shard + min_num_params = 2K + No-Prefetch + No-use_original_params + MPT + fp16 | 256 |  |  |  |
 | FSDP + Full_Shard + min_num_params = 2K + No-Prefetch + No-use_original_params + MPT + fp16 + Gradient checkpointing  | 512 |  |  |  |
 
-Table 1: Finetuning GPT-2(144M) model 0- different strategies and batch sizes
+**Table 1: Finetuning GPT-2(144M) model 0- different strategies and batch sizes**
+
+
 
 | Batch Size Max ($BS) | Full-Sharding | Wrapping Strategy | Prefetch | Forward-fetch | use_original_params | CPU-RAM Offloading+Efficient Loading | Mixed Precision Training
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -30,7 +32,7 @@ Table 1: Finetuning GPT-2(144M) model 0- different strategies and batch sizes
 | 256 | ✅ | Size based wrap - 2k params | ❌ | ❌ | ❌ | ✅ | ✅ |
 | 512  | ✅ | Size based wrap - 2k params |  ❌| ❌ | ❌ | ✅ | ✅ |
 
-Table 2: FSDP Sharding Strategies for different batch sizes
+**Table 2: FSDP Sharding Strategies for different batch sizes**
 
 ## What worked
 1. Mixed precision - fp 16
