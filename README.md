@@ -30,7 +30,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
    GPU Resource Utilisation Graphs -
 
-   ![Local Image](./images/512.jpg "GPU utilisation during training for batchsize = 512")
+   ![Local Image](images/512.jpg "GPU utilisation during training for batchsize = 512")
 
    ![Local Image](./image.jpg "GPU utilisation during training for batchsize = 256")
 
