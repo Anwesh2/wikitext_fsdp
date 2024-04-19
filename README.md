@@ -56,32 +56,32 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 **Table 2: FSDP Sharding Strategies for different batch sizes**
 
 ## What worked
-1. Mixed precision - fp 16
-2. Gradient checkpointing
-3. CPU Offloading
-4. Full Sharding
+1.  Mixed precision - fp 16
+2.  Gradient checkpointing
+3.  CPU Offloading
+4.  Full Sharding
 
 ## Challenges 
-1. Making the model fit onto the available GPU RAMs
-2. Experimenting with FSDP parameters
-3. Making fp8 work
-4. Access to budget/billing usage
+1.  Making the model fit onto the available GPU RAMs
+2.  Experimenting with FSDP parameters
+3.  Making fp8 work
+4.  Access to budget/billing usage
 
 ## Limitations
-1. Make the code more modular to make the trainign work for different datasets and models 
-2. Build custom training class to have more control on the FSDP processes
-3. Incorporate hyperparametertuning for better performance
+1.  Make the code more modular to make the trainign work for different datasets and models 
+2.  Build custom training class to have more control on the FSDP processes
+3.  Incorporate hyperparametertuning for better performance
 
 ## Things to Do
-1. Generate training and validation plots
-2. Genrate GPU utilisation graphs
+1.  Generate training and validation plots
+2.  Genrate GPU utilisation graphs
 
 ## Things to Try
-1. PEFT LoRA QloRA
-2. Automated experiments of FSDP parameters
-3. Improve GPU utilization
-4. Optimise using Dynamo
-5. Integrate experiment tracking 
+1.  PEFT LoRA QloRA
+2.  Automated experiments of FSDP parameters
+3.  Improve GPU utilization
+4.  Optimise using Dynamo
+5.  Integrate experiment tracking 
 
 
 
