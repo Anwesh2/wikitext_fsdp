@@ -31,6 +31,8 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
    
    e. Attempted gradient checkpointing. `batch_size = 512` and higher was working now. The tradeoff is initial accuracy halved/perplexity doubled.
+   
+6. Saved, pushed, and created a custom fine-tuned model on the Huggingface hub. Easier to access for testing/inferencing.
 
 
 
@@ -68,21 +70,20 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 4.  Access to budget/billing usage
 
 ## Limitations
-1.  Make the code more modular to make the training work for different datasets and models 
-2.  Build a custom training class to have more control on the FSDP processes
-3.  Incorporate hyperparameter tuning for better performance
+1.  Make the code more modular to make the training work for different datasets and models. 
+2.  Build a custom training class to have more control over the FSDP processes.
+3.  Incorporate hyperparameter tuning for better performance.
 
 ## Things to Do
-1.  Generate training and validation plots
-2.  Generate GPU utilization graphs
-
-## Things to Try
-1.  PEFT LoRA QloRA
-2.  Automated experiments of FSDP parameters
-3.  Improve GPU utilization
-4.  Optimise using Dynamo
-5.  Integrate experiment tracking 
-
+1.  Generate training and validation plots.
+2.  Generate proper GPU utilization graphs.
+3.  Implement better metrics (ROUGE, holistic accuracy metrics)
+4.  PEFT LoRA QloRA
+5.  Automated experiments of FSDP parameters
+6.  Improve GPU utilization
+7.  Optimise using Dynamo
+8.  Integrate experiment tracking 
+9.  Better inferencing pipeline
 
 
 
