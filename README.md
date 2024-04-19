@@ -41,10 +41,10 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
 | Method | Batch Size Max ($BS) | Approx Train Time (minutes) | Perplexity | Notes
 | --- | --- | --- | --- | --- |
-| FSDP + full_shard | 64 |  |  |  |
-| FSDP + full_shard + transformer_based_wrap | 128 |  |  |  |
-| FSDP + full_shard + min_num_params = 2K + no-prefetch + no-use_original_params + MPT + fp16 | 256 |  |  |  |
-| FSDP + full_shard + min_num_params = 2K + no-prefetch + no-use_original_params + MPT + fp16 + Gradient checkpointing  | 512 |  |  |  |
+| FSDP + full_shard | 64 | 1:52 |85  |  |
+| FSDP + full_shard + transformer_based_wrap | 128 | 1:47 | 62 |  |
+| FSDP + full_shard + min_num_params = 2K + no-prefetch + no-use_original_params + MPT + fp16 | 256 | 1:22 | 45.36 |  |
+| FSDP + full_shard + min_num_params = 2K + no-prefetch + no-use_original_params + MPT + fp16 + Gradient checkpointing  | 512 |1:39  | 35.09 - ~24 |  |
 
 **Table 1: Finetuning GPT-2(144M) model 0- different strategies and batch sizes**
 
