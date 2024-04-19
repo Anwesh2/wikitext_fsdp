@@ -30,7 +30,7 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
    
-   e. Attempted gradient checkpointing. `batch_size = 512` and higher was working now.
+   e. Attempted gradient checkpointing. `batch_size = 512` and higher was working now. The tradeoff is initial accuracy halved/perplexity doubled.
 
 
 
