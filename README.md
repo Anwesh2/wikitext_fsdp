@@ -12,7 +12,7 @@ Processing - a per-gpu batch size of 24, which totals to a batch size of 96 (acr
 
 Token size - 512 
 
-#Experiments
+##Experiments
 
 
 | Method | Batch Size Max ($BS) | Approx Train Time (minutes) | Perplexity | Notes
@@ -39,22 +39,22 @@ Table 2: FSDP Sharding Strategies for different batch sizes
 3. CPU Offloading
 4. Full Sharding
 
-#Challenges 
+##Challenges 
 1. Making the model fit onto the available GPU RAMs
 2. Experimenting with FSDP parameters
 3. Making fp8 work
 4. Access to budget/billing usage
 
-#Limitations
+##Limitations
 1. Make the code more modular to make the trainign work for different datasets and models 
 2. Build custom training class to have more control on the FSDP processes
 3. Incorporate hyperparametertuning for better performance
 
-#Things to Do
+##Things to Do
 1. Generate training and validation plots
 2. Genrate GPU utilisation graphs
 
-#Things to Try
+##Things to Try
 1. PEFT LoRA QloRA
 2. Automated experiments of FSDP parameters
 3. Improve GPU utilization
