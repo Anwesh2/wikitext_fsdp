@@ -3,9 +3,9 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
    **Instance used** - EC2 g4dn.12xlarge instance
 
-   **Dataset used** - [wikitext-2-v1] (https://huggingface.co/datasets/wikitext/viewer/wikitext-2-v1)
+   **Dataset used** - [wikitext-2-v1](https://huggingface.co/datasets/wikitext/viewer/wikitext-2-v1)
 
-   **Model used** - [GPT-2 (144M)] (https://huggingface.co/openai-community/gpt2)
+   **Model used** - [GPT-2 (144M)](https://huggingface.co/openai-community/gpt2)
 
    **Processing** - a per-gpu batch size of 24, which totals to a batch size of 96 (across all 4 GPUs) with FSDP leveraged
 
