@@ -22,26 +22,26 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
    
 5. Experimented with different parameters of FSDP to facilitate as high a size of batch_size and token_length as possible.
    
-   a.Full sharding + size based wrapping strategy + not pre-fetching + mixed precision training (fp 16) made `batch_size = 256` work
+   a.Full sharding + size based wrapping strategy + not pre-fetching + mixed precision training (fp 16) made `block_size = 256` work
 
-   b. `batch_size = 512` was still failing. There was a slight gap between memory reserved and memory allocation. Thought mixed precision training (fp 8) might do the trick. Spent tons of time here but it didn't work as it's not yet properly supported.
+   b. `block_size = 512` was still failing. There was a slight gap between memory reserved and memory allocation. Thought mixed precision training (fp 8) might do the trick. Spent tons of time here but it didn't work as it's not yet properly supported.
    
    c. Attempted to figure out the throughput and GPU utilization by plotting the GPU utilization graphs - there is some scope here as there was not 100% utilization of the RAM at all times.
 
    GPU Resource Utilisation Graphs -
 
-   ![batchsize = 512](/images/512_latest.png "GPU utilisation during training for batchsize = 512")
+   ![block_size = 512](/images/512_latest.png "GPU utilisation during training for block_size = 512")
 
    **GPU utilization during training for batch-size = 512**
 
-   ![batchsize = 256](/images/256_latest.png "GPU utilisation during training for batchsize = 256")
+   ![block_size = 256](/images/256_latest.png "GPU utilisation during training for block_size = 256")
 
    **GPU utilization during training for batch-size = 256**
 
 
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
    
-   e. Attempted gradient checkpointing. `batch_size = 512` and higher was working now. The tradeoff is initial accuracy halved/perplexity doubled.
+   e. Attempted gradient checkpointing. `block_size = 512` and higher was working now. The tradeoff is initial accuracy halved/perplexity doubled.
    
 7. Saved, pushed, and created a custom fine-tuned model on the Huggingface hub. Easier to access for testing/inferencing.
 
