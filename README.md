@@ -28,11 +28,22 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
    
    c. Attempted to figure out the throughput and GPU utilization by plotting the GPU utilization graphs - there is some scope here as there was not 100% utilization of the RAM at all times.
 
+   GPU Resource Utilisation Graphs -
+
+   ![Local Image](./images/512.jpg "GPU utilisation during training for batchsize = 512")
+
+   ![Local Image](./image.jpg "GPU utilisation during training for batchsize = 256")
+
+  ![Local Image](./image.jpg "GPU utilisation during training for batchsize = 128")
+
+  ![Local Image](./image.jpg "GPU utilisation during training for batchsize = 64")
+
+
    d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
    
    e. Attempted gradient checkpointing. `batch_size = 512` and higher was working now. The tradeoff is initial accuracy halved/perplexity doubled.
    
-6. Saved, pushed, and created a custom fine-tuned model on the Huggingface hub. Easier to access for testing/inferencing.
+7. Saved, pushed, and created a custom fine-tuned model on the Huggingface hub. Easier to access for testing/inferencing.
 
 
 
