@@ -11,6 +11,20 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 
 **Token size** - 512 
 
+## My process and thinking
+1. Created a base pipeline on Colab with dataset loading, model loading, tokenization, model finetuning.
+2. Attempted parallelization on Kaggle since it has multiple GPUs.
+3. Setup the AWS instances and made the base pipelines work on a single GPU, batch_size = 8
+4. Had a choice to either create a custom training class or leverage Huggingface's trainer and accelerate modules. Chose the later because of time constraints, sacrificing control for quicker experimentation.
+5. Experimeted with different parameters of FSDP to facilitate as high a size of batch_size and token_length as possible.
+   a.Full sharding + size based wrapping strategy + not pre-fetching + mixed precision training (fp 16) made batch_size = 256 work
+   b. batch_size = 512 was still failing. There was a slight gap between memory reserved and memory allocation. Thought mixed precision training (fp 8) might do the trick. Didn't work as it's not yet properly supported.
+   c. Ateempted to figureout the throughput and GPU utilisation by plotting the GPU utilisation graphs - there is some scope here as there was not 100% utlisation of the RAM at all times.
+   d. Tried to figure out the most efficient resizing strategies for the embeddings as I could see it being  slightly inefficient.
+   e. Attempted gradient checkpointing. batch_size = 512 and higher was working now
+
+
+
 ## Experiments
 
 
@@ -22,8 +36,6 @@ Finetuning GPT2 on wikitext using distributed training (FSDP)
 | FSDP + Full_Shard + min_num_params = 2K + No-Prefetch + No-use_original_params + MPT + fp16 + Gradient checkpointing  | 512 |  |  |  |
 
 **Table 1: Finetuning GPT-2(144M) model 0- different strategies and batch sizes**
-
-
 
 | Batch Size Max ($BS) | Full-Sharding | Wrapping Strategy | Prefetch | Forward-fetch | use_original_params | CPU-RAM Offloading+Efficient Loading | Mixed Precision Training
 | --- | --- | --- | --- | --- | --- | --- | --- |
