@@ -1,5 +1,5 @@
 # Finetuning GPT2 using FSDP
-Finetuning GPT2 on wikitext using distributed training (FSDP)
+Using distributed training (FSDP) for finetuning GPT2 on wikitext
 
    **Instance used** - EC2 g4dn.12xlarge instance
 
